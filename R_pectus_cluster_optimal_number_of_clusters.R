@@ -65,14 +65,14 @@ inertie <- sort(arbre$height, decreasing = TRUE)
 #________________________________________________________________________________create graphic for cluster number decision
 
 pdf(file = "C:/Users/csuehs/Dropbox/PECTUS-cluster/figures/figure_2_optimal_cluster_number.pdf",
-    width = 10,
-    height = 5)
+    width = 8,
+    height = 4)
 
 layout(matrix(c(1,2,2), nrow = 1, ncol = 3))
 
 plot(inertie[1:10], type = "s", xlab = "Number of clusters", 
      ylab = "Inertia", lwd = 2)
-abline(v = 2, lty=5, col = "red")
+abline(v = 2, lty=5, col = "gray69")
 minor.tick(nx=2, tick.ratio=1)
 
 plot(arbre,
@@ -82,21 +82,44 @@ plot(arbre,
      main = "",
      cex = 0.7, 
      labels = )
-rect.hclust(arbre, k = 2)
+rect.hclust(arbre, k = 2, border = "gray69")
 
 dev.off()
+
+tiff(file = "C:/Users/csuehs/Dropbox/PECTUS-cluster/figures/figure_2_optimal_cluster_number.tiff", units = "in",
+    width = 8, height = 4, res = 300)
+
+layout(matrix(c(1,2,2), nrow = 1, ncol = 3))
+
+plot(inertie[1:10], type = "s", xlab = "Number of clusters", 
+     ylab = "Inertia", lwd = 2)
+abline(v = 2, lty=5, col = "gray69")
+minor.tick(nx=2, tick.ratio=1)
+
+plot(arbre,
+     xlab = "Patients",
+     ylab = "Height (dissimilarity)",
+     sub = "",
+     main = "",
+     cex = 0.7, 
+     labels = )
+rect.hclust(arbre, k = 2, border = "gray69")
+
+dev.off()
+
+
 
 #________________________________________________________________________________create graphic for cluster number decision in French
 
 pdf(file = "C:/Users/csuehs/Dropbox/PECTUS-cluster/figures/optimal_cluster_number_french.pdf",
-    width = 10,
-    height = 5)
+    width = 8,
+    height = 4)
 
 layout(matrix(c(1,2,2), nrow = 1, ncol = 3))
 
 plot(inertie[1:10], type = "s", xlab = "Nombre de clusters", 
      ylab = "Inertie", lwd = 2)
-abline(v = 2, lty=5, col = "red")
+abline(v = 2, lty=5, col = "gray69")
 minor.tick(nx=2, tick.ratio=1)
 
 plot(arbre,
@@ -106,9 +129,13 @@ plot(arbre,
      main = "",
      cex = 0.7, 
      labels = )
-rect.hclust(arbre, k = 2)
+rect.hclust(arbre, k = 2, border = "gray69")
 
 dev.off()
+
+
+
+
 
 #________________________________________________________________________________divide patients into two groups
 
@@ -551,6 +578,36 @@ grid.arrange(age_plot,
              nrow = 4)
 
 dev.off()
+
+tiff(file = "C:/Users/csuehs/Dropbox/PECTUS-cluster/figures/figure_3_all_plots.tiff", units = "in",
+    width = 20, height = 16, res = 300)
+
+
+grid.arrange(age_plot,
+             sex_plot,
+             bmi_plot,
+             hal_plot,
+             fam_plot,
+             dysp_plot,
+             palp_plot,
+             pp_plot,
+             fvc_plot,
+             tlc_plot,
+             rt_plot,
+             ff_plot,
+             frc_plot,
+             o2p_plot,
+             anom_plot,
+             vt_plot,
+             v02_plot,
+             hrm_plot,
+             res_plot,
+             nrow = 4)
+
+dev.off()
+
+
+
 
 
 ############################################################################______qualitative only
