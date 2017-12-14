@@ -424,11 +424,13 @@ pc_boxplot <- function(var1, tit, pval) {
         geom_point(aes(x = 2, y = mean2, size = 5)) + 
         xlab(tity) +
         ylab(tit) +
+        scale_x_continuous(breaks = scales::pretty_breaks(n = 2))+
         theme(legend.position = "none",
               axis.title=element_text(size=18),
               axis.text.x=element_text(size=12),
               axis.text.y=element_text(size=12),
-              panel.background = element_rect(fill = NULL))
+              panel.background = element_rect(fill = "white"),
+              axis.line = element_line(colour = "black"))
     
     bp
     
@@ -459,7 +461,9 @@ pc_barchart <- function (var1, tit, pval) {
         theme(legend.position = "none",
               axis.title=element_text(size=18),
               axis.text.x=element_text(size=12),
-              axis.text.y=element_text(size=12))
+              axis.text.y=element_text(size=12),
+              panel.background = element_rect(fill = "white"),
+              axis.line = element_line(colour = "black"))
     
     bc
     
